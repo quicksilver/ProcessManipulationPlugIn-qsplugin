@@ -6,11 +6,16 @@
 //  Copyright __MyCompanyName__ 2005. All rights reserved.
 //
 
-#import <QSCore/QSObject.h>
-#import <QSCore/QSActionProvider.h>
+//#import <QSCore/QSObject_Numeric.h>
 #import "QSProcessManipulationPlugInAction.h"
 #define QSProcessManipulationPlugInType @"QSProcessManipulationPlugIn_Type"
 
+@interface QSObject (Numeric) {
+    
+}
++(QSObject *)numericObjectWithName:(NSString *)name intValue:(int)value;
+@end
+  
 @interface QSAdvancedProcessActionProvider : QSActionProvider{
 }
 - (int)pidOfProcess:(QSObject *)dObject;
