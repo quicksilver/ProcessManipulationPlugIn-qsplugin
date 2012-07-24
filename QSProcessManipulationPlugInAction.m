@@ -9,45 +9,60 @@
 #import "QSProcessManipulationPlugInAction.h"
 #import <signal.h>
 #import <signal.h>
-#import <QSInterface/QSTextViewer.h>
 #include <sys/time.h>
 #include <sys/resource.h>
 
 #include <Security/Authorization.h>
 #include <Security/AuthorizationTags.h>
+
+@implementation QSObject (Numeric)
+
++(QSObject *)numericObjectWithName:(NSString *)name intValue:(int)value {
+    QSObject *newObject = [QSObject objectWithName:name];
+    [newObject setObject:[NSNumber numberWithInt:value] forType:QSNumericType];
+    [newObject setPrimaryType:QSNumericType];
+    [newObject setIcon:[QSResourceManager imageNamed:@"ExecutableBinaryIcon"]];
+    [newObject setIconLoaded:YES];
+    return newObject;
+}
+
+
+
+@end
+
 @implementation QSAdvancedProcessActionProvider
 
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject{
 	if ([action isEqualToString:@"ProcessSignalAction"]){
 		return [NSArray arrayWithObjects:
 		[QSObject numericObjectWithName:@"SIGHUP" intValue:1],	/* hangup */
-			[QSObject numericObjectWithName:@"SIGINT" intValue:2],	/* interrupt */
-					[QSObject numericObjectWithName:@"SIGQUIT" intValue:3],	/* quit */
-						[QSObject numericObjectWithName:@"SIGILL" intValue:4],	/* illegal instruction (not reset when caught) */
-							[QSObject numericObjectWithName:@"SIGTRAP" intValue:5],	/* trace trap (not reset when caught) */
-								[QSObject numericObjectWithName:@"SIGABRT" intValue:6],	/* abort() */
-									[QSObject numericObjectWithName:@"SIGPOLL" intValue:7],	/* pollable event ([XSR] generated, not supported) */
-										[QSObject numericObjectWithName:@"SIGIOT" intValue:SIGABRT],	/* compatibility */
-											[QSObject numericObjectWithName:@"SIGEMT" intValue:7],	/* EMT instruction */
-												[QSObject numericObjectWithName:@"SIGFPE" intValue:8],	/* floating point exception */
-													[QSObject numericObjectWithName:@"SIGKILL" intValue:9],	/* kill (cannot be caught or ignored) */
-														[QSObject numericObjectWithName:@"SIGBUS" intValue:10],	/* bus error */
-															[QSObject numericObjectWithName:@"SIGSEGV" intValue:11],	/* segmentation violation */
-																[QSObject numericObjectWithName:@"SIGSYS" intValue:12],	/* bad argument to system call */
-																	[QSObject numericObjectWithName:@"SIGPIPE" intValue:13],	/* write on a pipe with no one to read it */
-																		[QSObject numericObjectWithName:@"SIGALRM" intValue:14],	/* alarm clock */
-																			[QSObject numericObjectWithName:@"SIGTERM" intValue:15],	/* software termination signal from kill */
-																				[QSObject numericObjectWithName:@"SIGURG" intValue:16],	/* urgent condition on IO channel */
-																					[QSObject numericObjectWithName:@"SIGSTOP" intValue:17],	/* sendable stop signal not from tty */
-																						[QSObject numericObjectWithName:@"SIGTSTP" intValue:18],	/* stop signal from tty */
-																							[QSObject numericObjectWithName:@"SIGCONT" intValue:19],	/* continue a stopped process */
-																								[QSObject numericObjectWithName:@"SIGCHLD" intValue:20],	/* to parent on child stop or exit */
-																									[QSObject numericObjectWithName:@"SIGTTIN" intValue:21],	/* to readers pgrp upon background tty read */
-																										[QSObject numericObjectWithName:@"SIGTTOU" intValue:22],	/* like TTIN for output if (tp->t_local&LTOSTOP) */
-																											[QSObject numericObjectWithName:@"SIGIO" intValue:23],	/* input/output possible signal */
-																												[QSObject numericObjectWithName:@"SIGXCPU" intValue:24],	/* exceeded CPU time limit */
-																													[QSObject numericObjectWithName:@"SIGXFSZ" intValue:25],	/* exceeded file size limit */
-																														nil];
+        [QSObject numericObjectWithName:@"SIGINT" intValue:2],	/* interrupt */
+		[QSObject numericObjectWithName:@"SIGQUIT" intValue:3],	/* quit */
+		[QSObject numericObjectWithName:@"SIGILL" intValue:4],	/* illegal instruction (not reset when caught) */
+		[QSObject numericObjectWithName:@"SIGTRAP" intValue:5],	/* trace trap (not reset when caught) */
+		[QSObject numericObjectWithName:@"SIGABRT" intValue:6],	/* abort() */
+		[QSObject numericObjectWithName:@"SIGPOLL" intValue:7],	/* pollable event ([XSR] generated, not supported) */
+		[QSObject numericObjectWithName:@"SIGIOT" intValue:SIGABRT],	/* compatibility */
+		[QSObject numericObjectWithName:@"SIGEMT" intValue:7],	/* EMT instruction */
+		[QSObject numericObjectWithName:@"SIGFPE" intValue:8],	/* floating point exception */
+		[QSObject numericObjectWithName:@"SIGKILL" intValue:9],	/* kill (cannot be caught or ignored) */
+		[QSObject numericObjectWithName:@"SIGBUS" intValue:10],	/* bus error */
+		[QSObject numericObjectWithName:@"SIGSEGV" intValue:11],	/* segmentation violation */
+        [QSObject numericObjectWithName:@"SIGSYS" intValue:12],	/* bad argument to system call */
+		[QSObject numericObjectWithName:@"SIGPIPE" intValue:13],	/* write on a pipe with no one to read it */
+		[QSObject numericObjectWithName:@"SIGALRM" intValue:14],	/* alarm clock */
+		[QSObject numericObjectWithName:@"SIGTERM" intValue:15],	/* software termination signal from kill */
+		[QSObject numericObjectWithName:@"SIGURG" intValue:16],	/* urgent condition on IO channel */
+		[QSObject numericObjectWithName:@"SIGSTOP" intValue:17],	/* sendable stop signal not from tty */
+		[QSObject numericObjectWithName:@"SIGTSTP" intValue:18],	/* stop signal from tty */
+		[QSObject numericObjectWithName:@"SIGCONT" intValue:19],	/* continue a stopped process */
+		[QSObject numericObjectWithName:@"SIGCHLD" intValue:20],	/* to parent on child stop or exit */
+		[QSObject numericObjectWithName:@"SIGTTIN" intValue:21],	/* to readers pgrp upon background tty read */
+		[QSObject numericObjectWithName:@"SIGTTOU" intValue:22],	/* like TTIN for output if (tp->t_local&LTOSTOP) */
+		[QSObject numericObjectWithName:@"SIGIO" intValue:23],	/* input/output possible signal */
+		[QSObject numericObjectWithName:@"SIGXCPU" intValue:24],	/* exceeded CPU time limit */
+		[QSObject numericObjectWithName:@"SIGXFSZ" intValue:25],	/* exceeded file size limit */
+		nil];
 																													
 	}else if ([action isEqualToString:@"ProcessSetPriorityAction"]){
 		int pid=[self pidOfProcess:dObject];
@@ -91,6 +106,7 @@ return nil;
 - (QSObject *) signalProcess:(QSObject *)dObject withValue:(QSObject *)iObject{
 	int value=[[iObject objectForType:QSNumericType]intValue];
 	[self sendSignal:value toProcess:dObject];
+    return nil;
 }
 
 - (QSObject *) showFilesOfProcess:(QSObject *)dObject{
@@ -112,17 +128,17 @@ return nil;
 	NSMutableArray *files=[NSMutableArray array];
 	NSArray *lines=[output lines];
 	if ([lines count]){
-		int offset=[[lines objectAtIndex:0]rangeOfString:@"NAME"].location;
+		NSInteger offset=[[lines objectAtIndex:0]rangeOfString:@"NAME"].location;
 		lines=[lines subarrayWithRange:NSMakeRange(1,[lines count]-1)];
 		for(NSString * line in lines){
 			//NSLog([line substringFromIndex:63]);	
-			if ([line length]>offset+1){
+			if ((NSInteger)[line length] > offset+1){
 				QSObject *object=[QSObject objectWithString:[line substringFromIndex:offset]];
 				if (object)[files addObject:object];
 			}
 		}
 		
-		id controller=[[NSApp delegate]interfaceController];
+		id controller=[[NSApp delegate] interfaceController];
 		[controller showArray:files];
 	}
 	//	NSTask *task=[NSTask taskWithLaunchPath:@"/usr/sbin/lsof" arguments:[NSArray arrayWithObjects:@"-p",[NSString stringWithFormat:@"%d",pid],nil]];
@@ -150,7 +166,7 @@ return nil;
 		output=[[output lines] objectAtIndex:0];
 		outfile=[output substringFromIndex:NSMaxRange([output rangeOfString:@"written to file"])+1];
 	} 
-	output=[NSString stringWithContentsOfFile:outfile];
+	output=[NSString stringWithContentsOfFile:outfile encoding:NSUTF8StringEncoding error:nil];
 	
 	//NSLog(@"output :'%@'",outfile);
 	
@@ -221,7 +237,7 @@ return nil;
         if (myStatus != errAuthorizationSuccess) return NO;
         
         char myToolPath[] = "/usr/bin/renice";
-        char *myArguments[] = {(char *)[[[NSNumber numberWithInt:priority]stringValue]cString],"-p",(char *)[[[NSNumber numberWithInt:pid]stringValue]cString], NULL };
+        char *myArguments[] = {(char *)[[[NSNumber numberWithInt:priority]stringValue]cStringUsingEncoding:NSUTF8StringEncoding],"-p",(char *)[[[NSNumber numberWithInt:pid]stringValue]cStringUsingEncoding:NSUTF8StringEncoding], NULL };
 		//  FILE *myCommunicationsPipe = NULL;
 		//  char myReadBuffer[128];
         
@@ -233,7 +249,9 @@ return nil;
         AuthorizationFree (myAuthorizationRef, kAuthorizationFlagDefaults);                //17
     }
     
-    if (VERBOSE) NSLog(@"Priority of %D set to %d", pid, getpriority(PRIO_PROCESS, pid));
+#ifdef DEBUG
+        NSLog(@"Priority of %D set to %d", pid, getpriority(PRIO_PROCESS, pid));
+#endif
     return YES;
 }
 
