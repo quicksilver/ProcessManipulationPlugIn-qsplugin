@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>4C</string>
+	<string>4D</string>
 	<key>NSPrincipalClass</key>
 	<string>QSProcessManipulationPlugIn</string>
 	<key>QSActions</key>
@@ -49,7 +49,7 @@
 			<string>launchAsRoot:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>&apos;APPL&apos;</string>
+				<string>'APPL'</string>
 				<string>app</string>
 			</array>
 			<key>directTypes</key>
@@ -247,6 +247,7 @@
 		</dict>
 	</dict>
 	<key>QSRequirements</key>
-	<dict/>
+	<dict>
+	</dict>
 </dict>
 </plist>
