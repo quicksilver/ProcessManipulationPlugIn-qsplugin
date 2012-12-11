@@ -84,7 +84,7 @@
 			<key>feature</key>
 			<integer>1</integer>
 			<key>name</key>
-			<string>Force Quit</string>
+			<string>Force Quit (Kill)</string>
 		</dict>
 		<key>ProcessLowerPriorityAction</key>
 		<dict>
