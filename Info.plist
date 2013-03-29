@@ -49,7 +49,7 @@
 			<string>launchAsRoot:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>'APPL'</string>
+				<string>&apos;APPL&apos;</string>
 				<string>app</string>
 			</array>
 			<key>directTypes</key>
@@ -102,6 +102,40 @@
 			<integer>1</integer>
 			<key>name</key>
 			<string>Lower Priority</string>
+		</dict>
+		<key>ProcessMaximizePriorityAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSAdvancedProcessActionProvider</string>
+			<key>actionSelector</key>
+			<string>maximizePriority:</string>
+			<key>directTypes</key>
+			<array>
+				<string>qs.process</string>
+			</array>
+			<key>enabled</key>
+			<false/>
+			<key>feature</key>
+			<integer>1</integer>
+			<key>name</key>
+			<string>Maximize Priority</string>
+		</dict>
+		<key>ProcessMinimizePriorityAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSAdvancedProcessActionProvider</string>
+			<key>actionSelector</key>
+			<string>minimizePriority:</string>
+			<key>directTypes</key>
+			<array>
+				<string>qs.process</string>
+			</array>
+			<key>enabled</key>
+			<false/>
+			<key>feature</key>
+			<integer>1</integer>
+			<key>name</key>
+			<string>Minimize Priority</string>
 		</dict>
 		<key>ProcessRaisePriorityAction</key>
 		<dict>
@@ -247,7 +281,6 @@
 		</dict>
 	</dict>
 	<key>QSRequirements</key>
-	<dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

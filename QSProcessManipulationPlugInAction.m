@@ -15,6 +15,10 @@
 #include <Security/Authorization.h>
 #include <Security/AuthorizationTags.h>
 
+// Setting a higher "priority" corresponds to having a lower "nice" value.
+const int MAX_NICE_MIN_PRIORITY = 20;
+const int MIN_NICE_MAX_PRIORITY = -MAX_NICE_MIN_PRIORITY;
+
 @implementation QSObject (Numeric)
 
 +(QSObject *)numericObjectWithName:(NSString *)name intValue:(int)value {
@@ -176,11 +180,25 @@ return nil;
 	//	sampleTask
 }
 
+- (QSObject *) minimizePriority:(QSObject *)dObject{
+  int pid=[self pidOfProcess:dObject];
+  
+  [self setPriority:MAX_NICE_MIN_PRIORITY ofPID:pid];
+  return nil;
+}
+
+- (QSObject *) maximizePriority:(QSObject *)dObject{
+  int pid=[self pidOfProcess:dObject];
+  
+  [self setPriority:MIN_NICE_MAX_PRIORITY ofPID:pid];
+  return nil;
+}
+
 - (QSObject *) lowerPriority:(QSObject *)dObject{
-    int pid=[self pidOfProcess:dObject];
-    
-    [self setPriority:getpriority(PRIO_PROCESS,pid)+5 ofPID:pid];
-    return nil;
+  int pid=[self pidOfProcess:dObject];
+  
+  [self setPriority:getpriority(PRIO_PROCESS,pid)+5 ofPID:pid];
+  return nil;
 }
 
 - (QSObject *) raisePriority:(QSObject *)dObject{
@@ -193,8 +211,8 @@ return nil;
 	int pid=[self pidOfProcess:dObject];
 	int value=[[iObject objectForType:QSNumericType]intValue];
 	if (!value)value=[[iObject stringValue]intValue];
-	if (value>20)value=20;
-	else if (value<-20)value=-20;
+	if (value>MAX_NICE_MIN_PRIORITY)value=MAX_NICE_MIN_PRIORITY;
+	else if (value<MIN_NICE_MAX_PRIORITY)value=MIN_NICE_MAX_PRIORITY;
     [self setPriority:value ofPID:pid];
     return nil;
 }
