@@ -69,6 +69,25 @@
 			<key>name</key>
 			<string>Launch as Root</string>
 		</dict>
+		<key>ProcessGetPidAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSAdvancedProcessActionProvider</string>
+			<key>actionSelector</key>
+			<string>getPidAction:</string>
+			<key>directTypes</key>
+			<array>
+				<string>qs.process</string>
+			</array>
+			<key>displaysResult</key>
+			<integer>1</integer>
+			<key>enabled</key>
+			<false/>
+			<key>feature</key>
+			<integer>1</integer>
+			<key>name</key>
+			<string>Get Process Identifier (PID)</string>
+		</dict>
 		<key>ProcessKillAction</key>
 		<dict>
 			<key>actionClass</key>

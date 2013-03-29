@@ -218,9 +218,15 @@ return nil;
 }
 
 
-
 - (int)pidOfProcess:(QSObject *)dObject{
     return [[[dObject objectForType:QSProcessType]objectForKey:@"NSApplicationProcessIdentifier"]intValue];
+}
+
+// A wrapper for a QS action.
+- (QSObject *)getPidAction:(QSObject *)dObject{
+  int pid = [self pidOfProcess:dObject];
+  NSString *pidString = [NSString stringWithFormat:@"%d", pid];
+  return [QSObject objectWithString:pidString];
 }
 
 - (void)setPriority:(int)priority ofProcess:(QSObject *)dObject{
