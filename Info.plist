@@ -49,7 +49,7 @@
 			<string>launchAsRoot:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>&apos;APPL&apos;</string>
+				<string>'APPL'</string>
 				<string>app</string>
 			</array>
 			<key>directTypes</key>
@@ -290,85 +290,56 @@
 		<string>Actions for monitoring and modifying application processes on your machine.</string>
 		<key>extendedDescription</key>
 		<string>&lt;h2&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;This plugin interacts with applications and the &amp;ldquo;Running Applications &amp;amp; Processes&amp;rdquo; catalog entries. Most actions can be run directly on an application (i.e. search for an application as usual, then tab and select an action).&lt;/p&gt;
-
-&lt;p&gt;Make sure to enable the actions you want, under Preferences &gt; Actions &gt; by Plugin &gt; Process Manipulation.&lt;/p&gt;
-
-&lt;p&gt;If you want to be able to control background/hidden applications, go to Catalog &gt; Applications &gt; Running Applications &amp;amp; Processes &gt; Info (&amp;ldquo;i&amp;rdquo; button in the lower right) &gt; Source Options &gt; Check &amp;ldquo;Include background applications&amp;rdquo;. Then make sure &amp;ldquo;Running Applications &amp;amp; Processes&amp;rdquo; is selected. Now, you can search for &amp;ldquo;Running Applications Processes&amp;rdquo; in the Quicksilver command window and right-arrow to get a full list of processes.&lt;/p&gt;
-
-&lt;p&gt;IMPORTANT NOTE: Some applications have a lot of helper process. For example, iTunes has an &amp;ldquo;iTunes Helper&amp;rdquo; process, and Google Chrome has a process for each tab. If you&amp;rsquo;re getting unexpected results, try opening &lt;code&gt;Activity Monitor.app&lt;/code&gt; and making sure you&amp;rsquo;re not missing something.&lt;/p&gt;
-
+&lt;p&gt;This plugin interacts with applications and the "Running Applications &amp;amp; Processes" catalog entries. Most actions can be run directly on an application (i.e. search for an application as usual, then tab and select an action).&lt;/p&gt;
+&lt;p&gt;Make sure to enable the actions you want, under Preferences &amp;gt; Actions &amp;gt; by Plugin &amp;gt; Process Manipulation.&lt;/p&gt;
+&lt;p&gt;If you want to be able to control background/hidden applications, go to Catalog &amp;gt; Applications &amp;gt; Running Applications &amp;amp; Processes &amp;gt; Info ("i" button in the lower right) &amp;gt; Source Options &amp;gt; Check "Include background applications". Then make sure "Running Applications &amp;amp; Processes" is selected. Now, you can search for "Running Applications Processes" in the Quicksilver command window and right-arrow to get a full list of processes.&lt;/p&gt;
+&lt;p&gt;IMPORTANT NOTE: Some applications have a lot of helper process. For example, iTunes has an "iTunes Helper" process, and Google Chrome has a process for each tab. If you're getting unexpected results, try opening &lt;code&gt;Activity Monitor.app&lt;/code&gt; and making sure you're not missing something.&lt;/p&gt;
 &lt;h2&gt;Actions&lt;/h2&gt;
-
 &lt;h3&gt;Lauching/Terminating&lt;/h3&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Force Quit (Kill)&lt;/li&gt;
 &lt;li&gt;Launch a Copy&lt;/li&gt;
 &lt;li&gt;Launch as Root&lt;/li&gt;
 &lt;/ul&gt;
-
-
-&lt;p&gt;Quicksilver also has the following actions, even if you don&amp;rsquo;t install this plugin:&lt;/p&gt;
-
+&lt;p&gt;Quicksilver also has the following actions, even if you don't install this plugin:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Open&lt;/li&gt;
 &lt;li&gt;Relaunch&lt;/li&gt;
 &lt;li&gt;Open at Login&lt;/li&gt;
 &lt;li&gt;Do Not Open at Login&lt;/li&gt;
 &lt;/ul&gt;
-
-
 &lt;h3&gt;Information&lt;/h3&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Sample Process&lt;/li&gt;
 &lt;li&gt;List Open Files&lt;/li&gt;
-&lt;li&gt;Get Process Identifier (PID)
-
-&lt;ul&gt;
-&lt;li&gt;Note that if an application has helper processes, the returned PID may not always be what you want. For example, iTunes.app will return the PID of &lt;code&gt;iTunesHelper&lt;/code&gt;, and some applications may be a light frontend with a heavy kernel (which may be the process you&amp;rsquo;re actually interested in).&lt;/li&gt;
+&lt;li&gt;Get Process Identifier (PID)&lt;ul&gt;
+&lt;li&gt;Note that if an application has helper processes, the returned PID may not always be what you want. For example, iTunes.app will return the PID of &lt;code&gt;iTunesHelper&lt;/code&gt;, and some applications may be a light frontend with a heavy kernel (which may be the process you're actually interested in).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-
-
 &lt;h3&gt;Signals&lt;/h3&gt;
-
 &lt;p&gt;The operating system can interact with a process by sending it a signal.&lt;/p&gt;
-
-&lt;p&gt;See &lt;code&gt;man signal&lt;/code&gt; or &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/signal.3.html&quot;&gt;https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/signal.3.html&lt;/a&gt; for a full list of signals in OSX.&lt;/p&gt;
-
+&lt;p&gt;See &lt;code&gt;man signal&lt;/code&gt; or &lt;a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/signal.3.html"&gt;https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/signal.3.html&lt;/a&gt; for a full list of signals in OSX.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Pause Application (SIGTSTP)
-
-&lt;ul&gt;
+&lt;li&gt;Pause Application (SIGTSTP)&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;SIGTSTP&lt;/code&gt; is useful because it completely halts the operation of a process (without quitting it) and can be resumed later. It corresponds to &lt;code&gt;Ctrl-Z&lt;/code&gt; in a terminal/shell.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Resume Application (SIGCONT)
-
-&lt;ul&gt;
+&lt;li&gt;Resume Application (SIGCONT)&lt;ul&gt;
 &lt;li&gt;Resumes an application halted with &lt;code&gt;SIGTSTP&lt;/code&gt;. Note that when the program resumes, the unexpected pause might cause it to have issues with timeouts, file handles, etc. However, short pauses are usually harmless.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Send Signal&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Send Signal...&lt;/li&gt;
 &lt;/ul&gt;
-
-
 &lt;h3&gt;Priority&lt;/h3&gt;
-
-&lt;p&gt;What this plugin calls priority corresponds more to &amp;ldquo;niceness&amp;rdquo;. This ranges from -20 (least nice, highest priority) to 20 (nicest, lowest priority). Nicer processes will more easily give up CPU time. See &lt;code&gt;man nice&lt;/code&gt; and &lt;code&gt;man setpriority&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;It can be useful to lower the priority of a process to make sure the operating system stays responsive. Increasing priority isn&amp;rsquo;t very useful unless you have multiple programs vying for cycles.&lt;/p&gt;
-
+&lt;p&gt;What this plugin calls priority corresponds more to "niceness". This ranges from -20 (least nice, highest priority) to 20 (nicest, lowest priority). Nicer processes will more easily give up CPU time. See &lt;code&gt;man nice&lt;/code&gt; and &lt;code&gt;man setpriority&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;It can be useful to lower the priority of a process to make sure the operating system stays responsive. Increasing priority isn't very useful unless you have multiple programs vying for cycles.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Lower Priority&lt;/li&gt;
 &lt;li&gt;Raise Priority&lt;/li&gt;
 &lt;li&gt;Maximize Priority&lt;/li&gt;
 &lt;li&gt;Minimize Priority&lt;/li&gt;
-&lt;li&gt;Set Priority&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Set Priority...&lt;/li&gt;
 &lt;/ul&gt;</string>
 		<key>icon</key>
 		<string>ExecutableBinaryIcon</string>
@@ -382,6 +353,7 @@
 		</dict>
 	</dict>
 	<key>QSRequirements</key>
-	<dict/>
+	<dict>
+	</dict>
 </dict>
 </plist>
