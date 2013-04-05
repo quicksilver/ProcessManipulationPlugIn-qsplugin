@@ -5,15 +5,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>Process Manipulation Actions</string>
+	<string>Process Manipulation Plugin</string>
 	<key>CFBundleExecutable</key>
-	<string>Process Manipulation Actions</string>
+	<string>Process Manipulation Plugin</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.blacktree.Quicksilver.QSProcessManipulationPlugIn</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Process Manipulation Actions</string>
+	<string>Process Manipulation Plugin</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
