@@ -45,11 +45,11 @@ The operating system can interact with a process by sending it a signal.
 
 See `man signal` or <https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/signal.3.html> for a full list of signals in OSX.
 
-Pause Application (SIGTSTP)
-  : `SIGTSTP` is useful because it completely halts the operation of a process (without quitting it) and can be resumed later. It corresponds to `Ctrl-Z` in a terminal/shell.
+Pause Application (SIGSTOP)
+  : `SIGSTOP` is useful because it completely halts the operation of a process (without quitting it) and can be resumed later. It is similar to `Ctrl-Z` in a terminal/shell.
 
 Resume Application (SIGCONT)
-  : Resumes an application halted with `SIGTSTP`. Note that when the program resumes, the unexpected pause might cause it to have issues with timeouts, file handles, etc. However, short pauses are usually harmless.
+  : Resumes an application halted with `SIGSTOP`. Note that when the program resumes, the unexpected pause might cause it to have issues with timeouts, file handles, etc. However, short pauses are usually harmless.
 
 Send Signal...
   : Specify an arbitrary signal in the third pane.

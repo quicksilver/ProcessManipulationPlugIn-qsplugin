@@ -275,7 +275,7 @@
 			<key>feature</key>
 			<integer>1</integer>
 			<key>name</key>
-			<string>Pause Application (SIGTSTP)</string>
+			<string>Pause Application (SIGSTOP)</string>
 		</dict>
 	</dict>
 	<key>QSPlugIn</key>
@@ -324,10 +324,10 @@
 &lt;p&gt;The operating system can interact with a process by sending it a signal.&lt;/p&gt;
 &lt;p&gt;See &lt;code&gt;man signal&lt;/code&gt; or &lt;a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/signal.3.html"&gt;https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/signal.3.html&lt;/a&gt; for a full list of signals in OSX.&lt;/p&gt;
 &lt;dl&gt;
-&lt;dt&gt;Pause Application (SIGTSTP)&lt;/dt&gt;
-&lt;dd&gt;&lt;code&gt;SIGTSTP&lt;/code&gt; is useful because it completely halts the operation of a process (without quitting it) and can be resumed later. It corresponds to &lt;code&gt;Ctrl-Z&lt;/code&gt; in a terminal/shell.&lt;/dd&gt;
+&lt;dt&gt;Pause Application (SIGSTOP)&lt;/dt&gt;
+&lt;dd&gt;&lt;code&gt;SIGSTOP&lt;/code&gt; is useful because it completely halts the operation of a process (without quitting it) and can be resumed later. It is similar to &lt;code&gt;Ctrl-Z&lt;/code&gt; in a terminal/shell.&lt;/dd&gt;
 &lt;dt&gt;Resume Application (SIGCONT)&lt;/dt&gt;
-&lt;dd&gt;Resumes an application halted with &lt;code&gt;SIGTSTP&lt;/code&gt;. Note that when the program resumes, the unexpected pause might cause it to have issues with timeouts, file handles, etc. However, short pauses are usually harmless.&lt;/dd&gt;
+&lt;dd&gt;Resumes an application halted with &lt;code&gt;SIGSTOP&lt;/code&gt;. Note that when the program resumes, the unexpected pause might cause it to have issues with timeouts, file handles, etc. However, short pauses are usually harmless.&lt;/dd&gt;
 &lt;dt&gt;Send Signal...&lt;/dt&gt;
 &lt;dd&gt;Specify an arbitrary signal in the third pane.&lt;/dd&gt;
 &lt;/dl&gt;
