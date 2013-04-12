@@ -88,6 +88,25 @@
 			<key>name</key>
 			<string>Get Process Identifier (PID)</string>
 		</dict>
+		<key>ProcessGetPriorityAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSAdvancedProcessActionProvider</string>
+			<key>actionSelector</key>
+			<string>getPriorityAction:</string>
+			<key>directTypes</key>
+			<array>
+				<string>qs.process</string>
+			</array>
+			<key>displaysResult</key>
+			<integer>1</integer>
+			<key>enabled</key>
+			<false/>
+			<key>feature</key>
+			<integer>1</integer>
+			<key>name</key>
+			<string>Get Priority (Niceness)</string>
+		</dict>
 		<key>ProcessKillAction</key>
 		<dict>
 			<key>actionClass</key>
@@ -344,6 +363,8 @@
 &lt;dd&gt;Set niceness to 20.&lt;/dd&gt;
 &lt;dt&gt;Maximize Priority&lt;/dt&gt;
 &lt;dd&gt;Set niceness to -20.&lt;/dd&gt;
+&lt;dt&gt;Get Priority (Niceness)&lt;/dt&gt;
+&lt;dd&gt;Return the priority (niceness) of the application in the first pane.&lt;/dd&gt;
 &lt;dt&gt;Set Priority...&lt;/dt&gt;
 &lt;dd&gt;Specify a priority in the third pane.&lt;/dd&gt;
 &lt;/dl&gt;</string>

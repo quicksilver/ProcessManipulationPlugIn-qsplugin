@@ -74,6 +74,9 @@ Minimize Priority
 Maximize Priority
   : Set niceness to -20.
 
+Get Priority (Niceness)
+  : Return the priority (niceness) of the application in the first pane.
+
 Set Priority...
   : Specify a priority in the third pane.
 

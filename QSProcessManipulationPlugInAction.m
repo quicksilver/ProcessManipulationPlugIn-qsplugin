@@ -228,10 +228,12 @@ return nil;
   return [QSObject objectWithString:pidString];
 }
 
-- (void)setPriority:(int)priority ofProcess:(QSObject *)dObject{
-	
+// A wrapper for a QS action.
+- (QSObject *)getPriorityAction:(QSObject *)dObject{
     int pid=[self pidOfProcess:dObject];
-    [self setPriority:priority ofPID:pid];
+    int prio = getpriority(PRIO_PROCESS,pid);
+    NSString *priorityString = [NSString stringWithFormat:@"%d", prio];
+    return [QSObject objectWithString:priorityString];
 }
 
 - (BOOL)setPriority:(int)priority ofPID:(int)pid{
