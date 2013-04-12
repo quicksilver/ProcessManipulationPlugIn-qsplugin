@@ -130,6 +130,8 @@
 			<string>QSAdvancedProcessActionProvider</string>
 			<key>actionSelector</key>
 			<string>lowerPriority:</string>
+			<key>alternateAction</key>
+			<string>ProcessMinimizePriorityAction</string>
 			<key>directTypes</key>
 			<array>
 				<string>qs.process</string>
@@ -147,6 +149,8 @@
 			<string>QSAdvancedProcessActionProvider</string>
 			<key>actionSelector</key>
 			<string>maximizePriority:</string>
+			<key>alternateAction</key>
+			<string>ProcessRaisePriorityAction</string>
 			<key>directTypes</key>
 			<array>
 				<string>qs.process</string>
@@ -164,6 +168,8 @@
 			<string>QSAdvancedProcessActionProvider</string>
 			<key>actionSelector</key>
 			<string>minimizePriority:</string>
+			<key>alternateAction</key>
+			<string>ProcessLowerPriorityAction</string>
 			<key>directTypes</key>
 			<array>
 				<string>qs.process</string>
@@ -181,6 +187,8 @@
 			<string>QSAdvancedProcessActionProvider</string>
 			<key>actionSelector</key>
 			<string>raisePriority:</string>
+			<key>alternateAction</key>
+			<string>ProcessMaximizePriorityAction</string>
 			<key>directTypes</key>
 			<array>
 				<string>qs.process</string>
@@ -198,6 +206,8 @@
 			<string>QSAdvancedProcessActionProvider</string>
 			<key>actionSelector</key>
 			<string>resumeProcess:</string>
+			<key>alternateAction</key>
+			<string>ProcessSuspendAction</string>
 			<key>directTypes</key>
 			<array>
 				<string>qs.process</string>
@@ -285,6 +295,8 @@
 			<string>QSAdvancedProcessActionProvider</string>
 			<key>actionSelector</key>
 			<string>suspendProcess:</string>
+			<key>alternateAction</key>
+			<string>ProcessResumeAction</string>
 			<key>directTypes</key>
 			<array>
 				<string>qs.process</string>
