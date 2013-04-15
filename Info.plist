@@ -229,6 +229,8 @@
 			<array>
 				<string>qs.process</string>
 			</array>
+			<key>displaysResult</key>
+			<string>1</string>
 			<key>enabled</key>
 			<false/>
 			<key>feature</key>
@@ -345,7 +347,7 @@
 &lt;h3&gt;Information&lt;/h3&gt;
 &lt;dl&gt;
 &lt;dt&gt;Sample Process&lt;/dt&gt;
-&lt;dd&gt;Sample the process and return the result in the first pane. Currently appears to be broken.&lt;/dd&gt;
+&lt;dd&gt;Sample the process for 5 seconds and return the result in the first pane.&lt;/dd&gt;
 &lt;dt&gt;List Open Files&lt;/dt&gt;
 &lt;dd&gt;Search the open files of the process in the first pane.&lt;/dd&gt;
 &lt;dt&gt;Get Process Identifier (PID)&lt;/dt&gt;

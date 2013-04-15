@@ -153,8 +153,7 @@ return nil;
 }
 - (QSObject *) sampleProcess:(QSObject *)dObject{
 	int pid=[self pidOfProcess:dObject];
-	NSString *outfile=@"/tmp/QuicksilverSample.txt";
-	NSString *str=[NSString stringWithFormat:@"/usr/bin/sample %d 5 5 2>&1",pid, outfile];
+	NSString *str=[NSString stringWithFormat:@"/usr/bin/sample %d 5 5 2>&1",pid];
 	FILE *file = popen( [str UTF8String], "r" );
 	NSString *output=nil;
 	NSMutableData *data=[NSMutableData data];
@@ -165,15 +164,9 @@ return nil;
 		while (length = fread( buffer, 1, sizeof( buffer ), file ))[data appendBytes:buffer length:length];
 		output=[[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]autorelease];
 		pclose( file );
-		//		NSLog(@"out %@ %d",output,NSMaxRange([output rangeOfString:@"written to file"]));
-		output=[[output lines] objectAtIndex:0];
-		outfile=[output substringFromIndex:NSMaxRange([output rangeOfString:@"written to file"])+1];
+        
+        return [QSObject objectWithString:output];
 	} 
-	output=[NSString stringWithContentsOfFile:outfile encoding:NSUTF8StringEncoding error:nil];
-	
-	//NSLog(@"output :'%@'",outfile);
-	
-	QSShowTextViewerWithString(output);	return [QSObject fileObjectWithPath:outfile];
 	return nil;
 	//	NSTask *sampleTask=[NSTask taskWithLaunchPath:@"/usr/bin/sample" arguments:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d",pid],@"5",@"5",nil];
 	//	sampleTask

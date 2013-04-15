@@ -31,7 +31,7 @@ Quicksilver also has the following actions, even if you don't install this plugi
 ### Information
 
 Sample Process
-  : Sample the process and return the result in the first pane. Currently appears to be broken.
+  : Sample the process for 5 seconds and return the result in the first pane.
 
 List Open Files
   : Search the open files of the process in the first pane.
