@@ -30,7 +30,7 @@
 		7FFA8E9C0816CCCA00A858CD /* QSEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSEffects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FFA8E9D0816CCCA00A858CD /* QSInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1AC9740486D14A00FE50C9 /* Process Manipulation Actions.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Process Manipulation Actions.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1AC9740486D14A00FE50C9 /* Process Manipulation Plugin.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Process Manipulation Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +87,7 @@
 		1ED78706FE9D4A0611CA0C5A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1AC9740486D14A00FE50C9 /* Process Manipulation Actions.qsplugin */,
+				8D1AC9740486D14A00FE50C9 /* Process Manipulation Plugin.qsplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,9 +117,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1AC9600486D14A00FE50C9 /* Process Manipulation Actions */ = {
+		8D1AC9600486D14A00FE50C9 /* Process Manipulation Plugin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Process Manipulation Actions" */;
+			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Process Manipulation Plugin" */;
 			buildPhases = (
 				E1022B2806B3475D00299BEC /* Update Version and Documentation */,
 				8D1AC9660486D14A00FE50C9 /* Resources */,
@@ -130,10 +130,10 @@
 			);
 			dependencies = (
 			);
-			name = "Process Manipulation Actions";
+			name = "Process Manipulation Plugin";
 			productInstallPath = "$(HOME)/Developer/Palettes";
 			productName = QSProcessManipulationPlugIn;
-			productReference = 8D1AC9740486D14A00FE50C9 /* Process Manipulation Actions.qsplugin */;
+			productReference = 8D1AC9740486D14A00FE50C9 /* Process Manipulation Plugin.qsplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -155,7 +155,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1AC9600486D14A00FE50C9 /* Process Manipulation Actions */,
+				8D1AC9600486D14A00FE50C9 /* Process Manipulation Plugin */,
 			);
 		};
 /* End PBXProject section */
@@ -204,7 +204,7 @@
 			baseConfigurationReference = 14DE931D10D0D40300851A6F /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = "Process Manipulation Actions";
+				PRODUCT_NAME = "Process Manipulation Plugin";
 			};
 			name = Debug;
 		};
@@ -213,7 +213,7 @@
 			baseConfigurationReference = 14DE931D10D0D40300851A6F /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = "Process Manipulation Actions";
+				PRODUCT_NAME = "Process Manipulation Plugin";
 			};
 			name = Release;
 		};
@@ -234,7 +234,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Process Manipulation Actions" */ = {
+		7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Process Manipulation Plugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F6B3EEC085CE8DF000735A8 /* Debug */,

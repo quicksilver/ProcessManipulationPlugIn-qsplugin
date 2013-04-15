@@ -8,12 +8,15 @@
 
 #import "QSProcessManipulationPlugInAction.h"
 #import <signal.h>
-#import <signal.h>
 #include <sys/time.h>
 #include <sys/resource.h>
 
 #include <Security/Authorization.h>
 #include <Security/AuthorizationTags.h>
+
+// Setting a higher "priority" corresponds to having a lower "nice" value.
+const int MAX_NICE_MIN_PRIORITY = 20;
+const int MIN_NICE_MAX_PRIORITY = -MAX_NICE_MIN_PRIORITY;
 
 @implementation QSObject (Numeric)
 
@@ -150,8 +153,7 @@ return nil;
 }
 - (QSObject *) sampleProcess:(QSObject *)dObject{
 	int pid=[self pidOfProcess:dObject];
-	NSString *outfile=@"/tmp/QuicksilverSample.txt";
-	NSString *str=[NSString stringWithFormat:@"/usr/bin/sample %d 5 5 2>&1",pid, outfile];
+	NSString *str=[NSString stringWithFormat:@"/usr/bin/sample %d 5 5 2>&1",pid];
 	FILE *file = popen( [str UTF8String], "r" );
 	NSString *output=nil;
 	NSMutableData *data=[NSMutableData data];
@@ -162,25 +164,33 @@ return nil;
 		while (length = fread( buffer, 1, sizeof( buffer ), file ))[data appendBytes:buffer length:length];
 		output=[[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]autorelease];
 		pclose( file );
-		//		NSLog(@"out %@ %d",output,NSMaxRange([output rangeOfString:@"written to file"]));
-		output=[[output lines] objectAtIndex:0];
-		outfile=[output substringFromIndex:NSMaxRange([output rangeOfString:@"written to file"])+1];
+        
+        return [QSObject objectWithString:output];
 	} 
-	output=[NSString stringWithContentsOfFile:outfile encoding:NSUTF8StringEncoding error:nil];
-	
-	//NSLog(@"output :'%@'",outfile);
-	
-	QSShowTextViewerWithString(output);	return [QSObject fileObjectWithPath:outfile];
 	return nil;
 	//	NSTask *sampleTask=[NSTask taskWithLaunchPath:@"/usr/bin/sample" arguments:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d",pid],@"5",@"5",nil];
 	//	sampleTask
 }
 
+- (QSObject *) minimizePriority:(QSObject *)dObject{
+  int pid=[self pidOfProcess:dObject];
+  
+  [self setPriority:MAX_NICE_MIN_PRIORITY ofPID:pid];
+  return nil;
+}
+
+- (QSObject *) maximizePriority:(QSObject *)dObject{
+  int pid=[self pidOfProcess:dObject];
+  
+  [self setPriority:MIN_NICE_MAX_PRIORITY ofPID:pid];
+  return nil;
+}
+
 - (QSObject *) lowerPriority:(QSObject *)dObject{
-    int pid=[self pidOfProcess:dObject];
-    
-    [self setPriority:getpriority(PRIO_PROCESS,pid)+5 ofPID:pid];
-    return nil;
+  int pid=[self pidOfProcess:dObject];
+  
+  [self setPriority:getpriority(PRIO_PROCESS,pid)+5 ofPID:pid];
+  return nil;
 }
 
 - (QSObject *) raisePriority:(QSObject *)dObject{
@@ -193,22 +203,30 @@ return nil;
 	int pid=[self pidOfProcess:dObject];
 	int value=[[iObject objectForType:QSNumericType]intValue];
 	if (!value)value=[[iObject stringValue]intValue];
-	if (value>20)value=20;
-	else if (value<-20)value=-20;
+	if (value>MAX_NICE_MIN_PRIORITY)value=MAX_NICE_MIN_PRIORITY;
+	else if (value<MIN_NICE_MAX_PRIORITY)value=MIN_NICE_MAX_PRIORITY;
     [self setPriority:value ofPID:pid];
     return nil;
 }
-
 
 
 - (int)pidOfProcess:(QSObject *)dObject{
     return [[[dObject objectForType:QSProcessType]objectForKey:@"NSApplicationProcessIdentifier"]intValue];
 }
 
-- (void)setPriority:(int)priority ofProcess:(QSObject *)dObject{
-	
+// A wrapper for a QS action.
+- (QSObject *)getPidAction:(QSObject *)dObject{
+  int pid = [self pidOfProcess:dObject];
+  NSString *pidString = [NSString stringWithFormat:@"%d", pid];
+  return [QSObject objectWithString:pidString];
+}
+
+// A wrapper for a QS action.
+- (QSObject *)getPriorityAction:(QSObject *)dObject{
     int pid=[self pidOfProcess:dObject];
-    [self setPriority:priority ofPID:pid];
+    int prio = getpriority(PRIO_PROCESS,pid);
+    NSString *priorityString = [NSString stringWithFormat:@"%d", prio];
+    return [QSObject objectWithString:priorityString];
 }
 
 - (BOOL)setPriority:(int)priority ofPID:(int)pid{
