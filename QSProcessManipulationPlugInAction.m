@@ -35,6 +35,12 @@ const int MIN_NICE_MAX_PRIORITY = -MAX_NICE_MIN_PRIORITY;
 
 @implementation QSAdvancedProcessActionProvider
 
+-(BOOL)loadChildrenForObject:(QSObject *)theObject {
+    // theObject is (currently) only Activity Monitor.app
+     [theObject setChildren:[[QSProcessMonitor sharedInstance] allProcesses]];
+    return YES;
+}
+
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject{
 	if ([action isEqualToString:@"ProcessSignalAction"]){
 		return [NSArray arrayWithObjects:
