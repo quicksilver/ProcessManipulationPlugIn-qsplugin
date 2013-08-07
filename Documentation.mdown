@@ -8,6 +8,10 @@ If you want to be able to control background/hidden applications, go to Catalog 
 
 IMPORTANT NOTE: Some applications have a lot of helper process. For example, iTunes has an "iTunes Helper" process, and Google Chrome has a process for each tab. If you're getting unexpected results, try opening `Activity Monitor.app` and making sure you're not missing something.
 
+## A list of 'All Processes'
+
+To get a list of all currently running processes easily, without enabling the "Running Applications & Processes" catalog entry, you can do so by right arrowing (→ or /) into Activity Monitor.app
+
 ## Actions
 
 ### Lauching/Terminating
