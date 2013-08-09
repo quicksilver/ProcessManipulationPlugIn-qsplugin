@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>CFBundleVersion</key>
-	<string>4E</string>
+	<string>4F</string>
 	<key>NSPrincipalClass</key>
-	<string>QSProcessManipulationPlugIn</string>
+	<string>QSAdvancedProcessActionProvider</string>
 	<key>QSActions</key>
 	<dict>
 		<key>AppLaunchAgainAction</key>
@@ -327,6 +327,8 @@
 &lt;p&gt;Make sure to enable the actions you want, under Preferences &amp;gt; Actions &amp;gt; by Plugin &amp;gt; Process Manipulation.&lt;/p&gt;
 &lt;p&gt;If you want to be able to control background/hidden applications, go to Catalog &amp;gt; Applications &amp;gt; Running Applications &amp;amp; Processes &amp;gt; Info ("i" button in the lower right) &amp;gt; Source Options &amp;gt; Check "Include background applications". Then make sure "Running Applications &amp;amp; Processes" is selected. Now, you can search for "Running Applications Processes" in the Quicksilver command window and right-arrow to get a full list of processes.&lt;/p&gt;
 &lt;p&gt;IMPORTANT NOTE: Some applications have a lot of helper process. For example, iTunes has an "iTunes Helper" process, and Google Chrome has a process for each tab. If you're getting unexpected results, try opening &lt;code&gt;Activity Monitor.app&lt;/code&gt; and making sure you're not missing something.&lt;/p&gt;
+&lt;h2&gt;A list of 'All Processes'&lt;/h2&gt;
+&lt;p&gt;To get a list of all currently running processes easily, without enabling the "Running Applications &amp;amp; Processes" catalog entry, you can do so by right arrowing (→ or /) into Activity Monitor.app&lt;/p&gt;
 &lt;h2&gt;Actions&lt;/h2&gt;
 &lt;h3&gt;Lauching/Terminating&lt;/h3&gt;
 &lt;dl&gt;
@@ -390,6 +392,11 @@
 		<key>QSActionProviders</key>
 		<dict>
 			<key>QSAdvancedProcessActionProvider</key>
+			<string>QSAdvancedProcessActionProvider</string>
+		</dict>
+		<key>QSBundleChildHandlers</key>
+		<dict>
+			<key>com.apple.ActivityMonitor</key>
 			<string>QSAdvancedProcessActionProvider</string>
 		</dict>
 	</dict>
