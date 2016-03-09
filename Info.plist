@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.1</string>
+	<string>1.1.2</string>
 	<key>CFBundleVersion</key>
-	<string>50</string>
+	<string>51</string>
 	<key>NSPrincipalClass</key>
 	<string>QSAdvancedProcessActionProvider</string>
 	<key>QSActions</key>
@@ -402,6 +402,10 @@
 	</dict>
 	<key>QSRequirements</key>
 	<dict>
+		<key>osRequired</key>
+		<string>10.9</string>
+		<key>version</key>
+		<string>4012</string>
 	</dict>
 </dict>
 </plist>
