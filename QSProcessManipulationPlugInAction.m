@@ -88,7 +88,7 @@ return nil;
 }
 
 - (QSObject *) killProcess:(QSObject *)dObject{
-	[self sendSignal:SIGQUIT toProcess:dObject];
+	[self sendSignal:SIGTERM toProcess:dObject];
 	return nil;
 }
 - (QSObject *) suspendProcess:(QSObject *)dObject{
